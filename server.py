@@ -4,7 +4,7 @@ import threading
 
 # Connection Data
 host = '127.0.0.1'  # сюда ввести  ip-address сервера
-port = 55555
+port = 55553
 
 # Starting Server
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # инициализация сервера
@@ -16,15 +16,11 @@ clients = []
 nicknames = []
 
 # Sending Messages To All Connected Clients
-
-
 def broadcast(message):
     for client in clients:
         client.send(message)
 
 # Handling Messages From Clients
-
-
 def handle(client):
     while True:
         try:
@@ -41,10 +37,9 @@ def handle(client):
             nicknames.remove(nickname)
             break
 
+
 # Receiving / Listening Function
-
-
-def receive():
+def receive(): # функция сервера
     while True:
         # Accept Connection
         client, address = server.accept()
